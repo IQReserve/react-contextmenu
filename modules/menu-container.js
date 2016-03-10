@@ -54,7 +54,7 @@ var MenuContainer = _react2.default.createClass({
         delete this.localNode;
     },
     getMenuPosition: function getMenuPosition(x, y) {
-        var menu = findDOMNode(this.refs.menu);
+        var menu = _reactDom2.default.findDOMNode(this.refs.menu);
         var scrollX = document.documentElement.scrollTop;
         var scrollY = document.documentElement.scrollLeft;
         var _window = window;
