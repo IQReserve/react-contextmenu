@@ -33,11 +33,20 @@ export default function(identifier, configure) {
             displayName: `${displayName}ContextMenuLayer`,
             componentDidMount() {
                 document
-                    .addEventListener("contextmenu", this.handleContextClick);
+                    .addEventListener("contextmenu", this.handleContextClick)
+                    .addEventListener("click", this.handleClick);
             },
             componentWillUnmount() {
                 document
-                    .removeEventListener("contextmenu", this.handleContextClick);
+                    .removeEventListener("contextmenu", this.handleContextClick)
+                    .removeEventListener("click", this.handleClick);
+            },
+            handleClick() {
+                const actions = flux.getActions("menu");
+
+                actions.setParams({
+                    isVisible: false
+                });
             },
             handleContextClick(event) {
                 let target = event.target,
