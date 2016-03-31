@@ -32,14 +32,12 @@ export default function(identifier, configure) {
         return React.createClass({
             displayName: `${displayName}ContextMenuLayer`,
             componentDidMount() {
-                document
-                    .addEventListener("contextmenu", this.handleContextClick)
-                    .addEventListener("click", this.handleClick);
+                document.addEventListener("contextmenu", this.handleContextClick);
+                document.addEventListener("click", this.handleClick);
             },
             componentWillUnmount() {
-                document
-                    .removeEventListener("contextmenu", this.handleContextClick)
-                    .removeEventListener("click", this.handleClick);
+                document.removeEventListener("contextmenu", this.handleContextClick);
+                document.removeEventListener("click", this.handleClick);
             },
             handleClick() {
                 const actions = flux.getActions("menu");

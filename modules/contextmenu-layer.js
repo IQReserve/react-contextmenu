@@ -19,10 +19,12 @@ exports.default = function (identifier, configure) {
         return _react2.default.createClass({
             displayName: displayName + "ContextMenuLayer",
             componentDidMount: function componentDidMount() {
-                document.addEventListener("contextmenu", this.handleContextClick).addEventListener("click", this.handleClick);
+                document.addEventListener("contextmenu", this.handleContextClick);
+                document.addEventListener("click", this.handleClick);
             },
             componentWillUnmount: function componentWillUnmount() {
-                document.removeEventListener("contextmenu", this.handleContextClick).removeEventListener("click", this.handleClick);
+                document.removeEventListener("contextmenu", this.handleContextClick);
+                document.removeEventListener("click", this.handleClick);
             },
             handleClick: function handleClick() {
                 var actions = _flux2.default.getActions("menu");
