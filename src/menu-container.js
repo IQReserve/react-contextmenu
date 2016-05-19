@@ -46,7 +46,7 @@ const MenuContainer = React.createClass({
         menuStyles.top = y + scrollY;
 
         if (y + offsetHeight > innerHeight) {
-            menuStyles.top -= offsetHeight;
+            menuStyles.top -= Math.min(offsetHeight, y);
         }
 
         menuStyles.left = x + scrollX;
