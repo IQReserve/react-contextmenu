@@ -39,12 +39,15 @@ export default function(identifier, configure) {
                 document.removeEventListener("contextmenu", this.handleContextClick);
                 document.removeEventListener("click", this.handleClick);
             },
-            handleClick() {
-                const actions = flux.getActions("menu");
+            handleClick(event) {
+                // do not handle if it is right button click
+                if (event.button != 2) {
+                    const actions = flux.getActions("menu");
 
-                actions.setParams({
-                    isVisible: false
-                });
+                    actions.setParams({
+                        isVisible: false
+                    });
+                }
             },
             handleContextClick(event) {
                 let target = event.target,

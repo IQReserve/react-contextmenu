@@ -26,12 +26,15 @@ exports.default = function (identifier, configure) {
                 document.removeEventListener("contextmenu", this.handleContextClick);
                 document.removeEventListener("click", this.handleClick);
             },
-            handleClick: function handleClick() {
-                var actions = _flux2.default.getActions("menu");
+            handleClick: function handleClick(event) {
+                // do not handle if it is right button click
+                if (event.button != 2) {
+                    var actions = _flux2.default.getActions("menu");
 
-                actions.setParams({
-                    isVisible: false
-                });
+                    actions.setParams({
+                        isVisible: false
+                    });
+                }
             },
             handleContextClick: function handleContextClick(event) {
                 var target = event.target,
